@@ -1,0 +1,46 @@
+# Blog_management-using-flask-
+
+For database make these two tables in mysql 
+
+1.create table 
+
+
+ CREATE TABLE `contacts` (
+  `sno` int(11) auto_increment primary key,
+  `name` text NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone_num` varchar(50) NOT NULL,
+  `msg` text NOT NULL,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  
+);
+ 
+
+
+
+2. create second table
+
+
+
+CREATE TABLE posts (
+  `sno` int(11) auto_increment primary key,
+  `title` text NOT NULL,
+  `subtitle` text NOT NULL,
+  `content` text NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  `img_url` varchar(100) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+);
+
+first we can insert some data manually then you can use the  flask app to manage the blogs
+
+INSERT INTO posts (sno, title, subtitle, content, slug, img_url, date) VALUES
+(1, 'first', 'first', 'first post sir ji', 'first', 'about-bg.jpg', '2020-03-07 15:06:18'),
+(2, ' Second Post.', 'This is Tagline.', 'Are you Enjoying my Posts. This is Just for Testing Purpose. Good Luck.', 'second-post', 'about-bg.jpg', '2020-03-06 16:19:23'),
+(3, 'Third Post.', 'This is Tagline.', 'This is Third Post.This is Third Post.This is Third Post.This is Third Post.This is Third Post.', 'third-post', 'home-bg.jpg', '2020-03-06 16:20:49'),
+(4, '4th Post.', 'This is Tagline.', 'This is fourth Post.', 'fourth-post', 'about-bg.jpg', '2020-03-06 16:20:49'),
+(5, 'Fifth Post.', 'This is Tagline.', 'This is Fifth Post.', 'fifth-post', 'about-bg.jpg', '2020-03-06 16:21:45'),
+(6, 'sixth post.', 'This is Tagline.', 'This is 6th Post. Hope you Enjoy.', 'sixth-post', 'about-bg.jpg', '2020-03-07 13:46:26'),
+(7, 'Seventh Post.', 'This is Tagline.', 'seventh', 'seven', 'about-bg.jpg', '2020-03-07 13:53:38');
+
+
