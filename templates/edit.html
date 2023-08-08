@@ -1,0 +1,110 @@
+
+{% extends 'layout.html' %}
+
+{% block title %}
+
+<title>home</title>
+
+{% endblock %}
+
+{% block body%}
+
+
+                  <!-- Page Header-->
+  <header class="masthead" style="background-image: url('/static/assets/img/home-bg.jpg')">
+   <div class="container position-relative px-4 px-lg-5">
+       <div class="row gx-4 gx-lg-5 justify-content-center">
+           <div class="col-md-10 col-lg-8 col-xl-7">
+               <div class="site-heading">
+                   <h1>admin pannel</h1>
+                   <span class="subheading">manage your post here </span>
+               </div>
+           </div>
+       </div>
+   </div>
+</header>
+
+
+<!--  message flashing -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+{%endfor%}
+{% endif %}
+{% endwith %}
+
+       <!-- Main Content-->
+       <div class="container px-4 px-lg-5">
+           <div class="row gx-4 gx-lg-5 justify-content-center">
+               <div class="col-md-10 col-lg-8 col-xl-7">
+                    
+                <h1>Add Edit post</h1>
+                <h1>Basic action </h1>
+                <a href ="/dashboard"><button class="btn btn-primary" >dashboard Home</button></a>
+                <a href ="/logout"><button class="btn btn-primary" >logout</button></a>
+
+
+                <form name = "sendMessage" id="contactForm" action ="/edit/{{sno}}"  method= 'POST',novalidate>
+
+
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                          <label>Title</label>
+                          <input type="text" class="form-control" placeholder="Title" id="title" name='title' required data-validation-required-message="Please enter your name." value="{{post.title}}">
+                          <p class="help-block text-danger"></p>
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                          <label>Subtitle </label>
+                          <input type="text" class="form-control" placeholder="subtitle"  id="subtitle"  name="subtitle"  required data-validation-required-message="Please enter your name." value="{{post.subtitle}}">
+                          <p class="help-block text-danger"></p>
+                        </div>
+                      </div>
+
+
+                    <div class="control-group">
+                        <label>slug</label>
+                        <input class="form-control" id="slug" name = 'slug' type="text" placeholder="Enter your phone number..." data-sb-validations="required" value = "{{post.slug}}" />
+                        
+                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>content</label>
+                        <textarea class="form-control" id="content" name = 'content' placeholder="content" style="height: 12rem" data-sb-validations="required" >{{post.content}}</textarea>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>img_file</label>
+                        <input class="form-control" id="img_file" name = "img_file" type="text" placeholder="img_file" data-sb-validations="required" value = "{{post.img_url}}"/>
+                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                    </div>
+
+                    <br />
+                   
+                    <!-- Submit Button-->
+                    <!--button class="btn btn-primary text-uppercase " id="submitButton" type="submit">Submit</button-->
+                    <button  type="submit"  class="btn btn-primary" id="submitButton" >Submit</button>
+
+                    
+                 
+                    </script>
+                </form>
+                
+                   <hr class="my-4" />
+                  
+                 
+           </div>
+       </div>
+     
+
+{%endblock%}
+
